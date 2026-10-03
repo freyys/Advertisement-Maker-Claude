@@ -4,6 +4,8 @@ import {DURATION, FPS} from './timeline';
 import {TeaserScreen, TeaserProps} from './Teaser';
 import {TeaserVertical} from './Vertical';
 import {fontsLoaded} from './fonts';
+import {StoryScreen, StoryVertical} from './story/Story';
+import {DURATION as STORY_DURATION} from './story/timeline';
 
 const handle = delayRender('Loading Plus Jakarta Sans');
 fontsLoaded.then(() => continueRender(handle));
@@ -25,6 +27,25 @@ export const RemotionRoot: React.FC = () => (
       id="KavoxTeaser-Vertical"
       component={TeaserVertical}
       durationInFrames={DURATION}
+      fps={FPS}
+      width={1080}
+      height={1920}
+      defaultProps={defaultProps}
+    />
+    {/* "KavoxStory": the slower, step-by-step cut with container-transform morphs */}
+    <Composition
+      id="KavoxStory-Screen"
+      component={StoryScreen}
+      durationInFrames={STORY_DURATION}
+      fps={FPS}
+      width={1920}
+      height={1080}
+      defaultProps={defaultProps}
+    />
+    <Composition
+      id="KavoxStory-Vertical"
+      component={StoryVertical}
+      durationInFrames={STORY_DURATION}
       fps={FPS}
       width={1080}
       height={1920}

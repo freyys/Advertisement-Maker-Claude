@@ -36,6 +36,39 @@ git-ignored and must never be baked into a delivery render.
 The numbers add up: (5+4)×2×2,60 − 2×1,25×1,2 − 1×2 = 41,8 m², priced at
 8,90 / 10,20 / 3,80 / 8,00 €/m² → 1.291,62 € netto, 245,41 € MwSt, 1.537,03 € brutto.
 
+## Second cut: `KavoxStory` (slower, step by step)
+
+This is a separate ~31 s video (930 frames) and does not replace the teaser above.
+It is built for reading: each step gets a numbered caption that holds for 4–6 s,
+and the UI shows the real phone flow from start to finish. There are no blur
+whips. Every transition is a container-transform morph, so one element turns
+into the next:
+
+| Step | Frames | Morph |
+|---|---|---|
+| Intro "Das Angebot – einfach gesagt." | 0–96 | App icon grows into the phone |
+| 01 — SAGEN | 96–282 | Dictation in the input → the input becomes the chat bubble → agent steps |
+| 02 — RECHNEN | 282–432 | Status block becomes the reply bubble; draft card grows out (4 positions, 1.291,62 €) |
+| 03 — ÄNDERN | 432–570 | „Die Decke auch streichen.“ flies out of the input and turns into the new row (+20,0 m², 1.451,62 €) |
+| 04 — PRÜFEN | 570–738 | "Prüfen & als Aufmaß übernehmen" expands into the Aufmaß screen, which scrolls through |
+| 05 — ÜBERGEBEN | 738–852 | "An den Rechner übergeben" shrinks to a document, flies out and unfolds into the A4 Angebot (1.727,43 € brutto) |
+| End | 852–930 | Angebot folds into the app icon; the K leaves it and A·V·O·X slide out from behind it |
+
+The vertical version (`KavoxStory-Vertical`) uses its own native 9:16 layout, not a
+panel. The caption sits at the top and the phone below it, both inside the safe zone.
+Body text is ≥ 28 px.
+
+Files: `src/story/` (`timeline.ts`, `copy.ts`, `layout.ts`, `Story.tsx`, views).
+
+```bash
+npx remotion render KavoxStory-Screen   out/kavox-story-screen-sfx.mp4
+npx remotion render KavoxStory-Screen   out/kavox-story-screen-silent.mp4   --muted
+npx remotion render KavoxStory-Vertical out/kavox-story-vertical-sfx.mp4
+npx remotion render KavoxStory-Vertical out/kavox-story-vertical-silent.mp4 --muted
+# or all four:
+npm run render:story
+```
+
 ## Where to change things
 
 - `src/timeline.ts`: every scene slot, ⚡ hit and scene-internal beat (retime here)
