@@ -1,0 +1,5 @@
+node_modules
+out
+.DS_Store
+# Optional reference track for sync previews only — never committed
+public/sound.mp3

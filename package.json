@@ -1,0 +1,31 @@
+{
+  "name": "kavox-teaser",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kavox KI-Angebot teaser (Remotion)",
+  "scripts": {
+    "dev": "remotion studio",
+    "sfx": "node scripts/make-sfx.mjs",
+    "still:logo": "remotion still KavoxTeaser-Screen out/still-logo.png --frame=385",
+    "render:screen": "remotion render KavoxTeaser-Screen out/kavox-teaser-screen-sfx.mp4",
+    "render:screen:silent": "remotion render KavoxTeaser-Screen out/kavox-teaser-screen-silent.mp4 --muted",
+    "render:vertical": "remotion render KavoxTeaser-Vertical out/kavox-teaser-vertical-sfx.mp4",
+    "render:vertical:silent": "remotion render KavoxTeaser-Vertical out/kavox-teaser-vertical-silent.mp4 --muted",
+    "render:all": "npm run sfx && npm run render:screen && npm run render:screen:silent && npm run render:vertical && npm run render:vertical:silent",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/plus-jakarta-sans": "^5.3.0",
+    "@remotion/cli": "4.0.532",
+    "@remotion/fonts": "4.0.532",
+    "@remotion/motion-blur": "4.0.532",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "5.9"
+  }
+}
