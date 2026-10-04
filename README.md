@@ -146,12 +146,24 @@ The drums drop at the first cut, the arrangement lifts at 20 s and 36 s, and the
 lands on the logo at frame 1710. SFX reuse `public/sfx`. Props: `withMusic`, `withSfx`
 (both default `true`).
 
-Files: `src/reel/` (`timeline.ts`, `copy.ts`, `tokens.ts`, `kit/`, `pages/`, `phases/`, `Reel.tsx`).
+**Voiceover:** the German ElevenLabs take lives in `public/reel/vo/source.mp3`, and the
+script is in [`docs/KAVOX_REEL_VO_SCRIPT.md`](docs/KAVOX_REEL_VO_SCRIPT.md).
+`scripts/prepare-vo.mjs` cuts the take into the 13 lines (segment map in the script),
+caps the pauses inside each line, speeds up long lines by at most 8 % so they fit their
+phase, loudness-normalises every line and writes `public/reel/vo/P01.wav … P13.wav` plus
+`src/reel/vo.json`, which holds the start frame and length of each line. The outro line is
+anchored so that "Kavox." lands on the logo hit. While the voice is speaking, the music
+ducks by about 8 dB and the SFX drop to 75 %. Prop: `withVoice` (default `true`). If you
+record a new take, update the segment times in `scripts/prepare-vo.mjs`
+(`ffmpeg -af silencedetect=noise=-40dB:d=0.18` lists them), then run `npm run vo`.
+
+Files: `src/reel/` (`timeline.ts`, `copy.ts`, `tokens.ts`, `kit/`, `pages/`, `phases/`, `Reel.tsx`, `vo.json`).
 
 ```bash
 npm run music                    # regenerate the music bed (deterministic)
-npm run render:reel              # out/reel/kavox-reel-full.mp4 (music + SFX)
-npm run render:reel:sfx-only     # out/reel/kavox-reel-full-sfx-only.mp4 (add a trending sound in-app)
+npm run vo                       # re-fit the voiceover lines (deterministic)
+npm run render:reel              # out/reel/kavox-reel-full.mp4 (voice + music + SFX)
+npm run render:reel:no-music     # out/reel/kavox-reel-full-no-music.mp4 (voice + SFX; add a trending sound in-app)
 npm run render:reel:phases       # cuts the master into out/reel/phases/kavox-reel-P01-Intro.mp4 …
 npm run render:reel:all          # all of the above
 # or render a single phase directly:

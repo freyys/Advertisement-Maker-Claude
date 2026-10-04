@@ -20,9 +20,10 @@
     "render:story": "npm run sfx && npm run render:story:screen && npm run render:story:screen:silent && npm run render:story:vertical && npm run render:story:vertical:silent",
     "music": "node scripts/make-music.mjs",
     "render:reel": "remotion render KavoxReel-Full out/reel/kavox-reel-full.mp4",
-    "render:reel:sfx-only": "remotion render KavoxReel-Full out/reel/kavox-reel-full-sfx-only.mp4 --props='{\"withMusic\":false,\"withSfx\":true}'",
     "render:reel:phases": "node scripts/cut-phases.mjs",
-    "render:reel:all": "npm run music && npm run render:reel && npm run render:reel:sfx-only && npm run render:reel:phases"
+    "render:reel:all": "npm run music && npm run vo && npm run render:reel && npm run render:reel:no-music && npm run render:reel:phases",
+    "vo": "node scripts/prepare-vo.mjs",
+    "render:reel:no-music": "remotion render KavoxReel-Full out/reel/kavox-reel-full-no-music.mp4 --props='{\"withMusic\":false,\"withSfx\":true,\"withVoice\":true}'"
   },
   "dependencies": {
     "@fontsource/plus-jakarta-sans": "^5.3.0",

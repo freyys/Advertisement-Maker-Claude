@@ -73,15 +73,15 @@ const Bubble: React.FC = () => (
 
 export const P01Intro: React.FC<{dur: number}> = ({dur}) => {
   const frame = useCurrentFrame();
-  const draw = prog(frame, 3, 28, ease.inOut);
-  const fill = prog(frame, 22, 34, ease.out);
-  const lift = prog(frame, 30, 54, ease.inOut);
-  const pulse = prog(frame, 24, 30, ease.out) * (1 - prog(frame, 30, 60, ease.soft));
-  const kSize = 230 - lift * 90;
-  const kY = 820 - lift * 300;
-  const l1 = (i: number) => prog(frame, 38 + i * 4, 58 + i * 4, ease.out);
-  const l2 = (i: number) => prog(frame, 50 + i * 4, 70 + i * 4, ease.out);
-  const sub = prog(frame, 68, 86, ease.out);
+  // synced to the voiceover: "Weniger Büro." f4 · "Mehr Baustelle!" f39 · "Das ist Kavox." f84
+  const draw = prog(frame, 0, 26, ease.inOut);
+  const fill = prog(frame, 80, 92, ease.out);
+  const pulse = prog(frame, 82, 88, ease.out) * (1 - prog(frame, 88, 116, ease.soft));
+  const kSize = 150;
+  const kY = 520;
+  const l1 = (i: number) => prog(frame, 3 + i * 9, 19 + i * 9, ease.out);
+  const l2 = (i: number) => prog(frame, 37 + i * 10, 53 + i * 10, ease.out);
+  const sub = prog(frame, 86, 100, ease.out);
   const streak = prog(frame, 0, 22, ease.inOut);
   const words1 = intro.line1.split(' ');
   const words2 = intro.line2.split(' ');
@@ -143,7 +143,7 @@ export const P01Intro: React.FC<{dur: number}> = ({dur}) => {
           style={{
             position: 'absolute',
             left: -200 + streak * 1480 - 300,
-            top: 818,
+            top: kY - 2,
             width: 600,
             height: 3,
             background: `linear-gradient(90deg, transparent, ${d.accent}, #fff, transparent)`,
@@ -206,9 +206,10 @@ export const P01Intro: React.FC<{dur: number}> = ({dur}) => {
       </Whip>
       <CutFlash frame={frame} dur={dur} noIn />
 
-      <S at={0} src="riser.wav" vol={0.35} />
-      <S at={24} src="impact.wav" vol={0.5} />
-      <S at={25} src="shimmer.wav" vol={0.45} />
+      <S at={0} src="whoosh-soft.wav" vol={0.35} />
+      <S at={60} src="riser.wav" vol={0.25} />
+      <S at={84} src="impact.wav" vol={0.45} />
+      <S at={86} src="shimmer.wav" vol={0.4} />
       <S at={36} src="whoosh-soft.wav" vol={0.6} />
       <CutWhoosh dur={dur} />
     </AbsoluteFill>

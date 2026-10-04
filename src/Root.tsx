@@ -9,7 +9,7 @@ import {DURATION as STORY_DURATION} from './story/timeline';
 import {makePhase, ReelFull, ReelProps} from './reel/Reel';
 import {PHASES, TOTAL as REEL_TOTAL} from './reel/timeline';
 
-const reelProps: ReelProps = {withMusic: true, withSfx: true};
+const reelProps: ReelProps = {withMusic: true, withSfx: true, withVoice: true};
 const reelPhases = PHASES.map((p) => ({...p, C: makePhase(p.key)}));
 
 const handle = delayRender('Loading Plus Jakarta Sans');

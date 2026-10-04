@@ -4,15 +4,15 @@ import {Audio, Sequence, staticFile} from 'remotion';
 // Self-generated, royalty-free SFX from public/sfx (scripts/make-sfx.mjs).
 // Whooshes peak about 9 frames after they start.
 const SFX_GAIN = 1.25;
-/** false → phases render without their SFX (music-only / silent cuts). */
-export const SfxContext = React.createContext(true);
+/** SFX gain for the phases: 0 = off, 1 = full, lower under the voiceover. */
+export const SfxContext = React.createContext(1);
 
 export const S: React.FC<{at: number; src: string; vol?: number}> = ({at, src, vol = 1}) => {
-  const on = React.useContext(SfxContext);
-  if (!on) return null;
+  const gain = React.useContext(SfxContext);
+  if (!gain) return null;
   return (
     <Sequence from={Math.max(0, Math.round(at))} layout="none">
-      <Audio src={staticFile(`sfx/${src}`)} volume={vol * SFX_GAIN} />
+      <Audio src={staticFile(`sfx/${src}`)} volume={vol * SFX_GAIN * gain} />
     </Sequence>
   );
 };

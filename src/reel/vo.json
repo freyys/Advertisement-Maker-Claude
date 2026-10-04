@@ -1,0 +1,93 @@
+[
+  {
+    "file": "P01.wav",
+    "text": "Weniger Büro. Mehr Baustelle! Das ist Kavox.",
+    "start": 4,
+    "frames": 115,
+    "tempo": 1.08
+  },
+  {
+    "file": "P02.wav",
+    "text": "Im Cockpit siehst du sofort: offene Rechnungen, Überfälliges … und deinen Umsatz.",
+    "start": 124,
+    "frames": 160,
+    "tempo": 1
+  },
+  {
+    "file": "P03.wav",
+    "text": "Der Cashflow-Radar zeigt dir, wann das Geld kommt.",
+    "start": 304,
+    "frames": 83,
+    "tempo": 1
+  },
+  {
+    "file": "P04.wav",
+    "text": "Einfach sagen, was zu tun ist. Die KI baut das Angebot – mit deinen Preisen.",
+    "start": 424,
+    "frames": 151,
+    "tempo": 1
+  },
+  {
+    "file": "P05.wav",
+    "text": "Jeder Quadratmeter mit Rechenweg. Nachvollziehbar.",
+    "start": 604,
+    "frames": 98,
+    "tempo": 1
+  },
+  {
+    "file": "P06.wav",
+    "text": "Summe zeigen, unterschreiben lassen – direkt beim Kunden.",
+    "start": 724,
+    "frames": 107,
+    "tempo": 1
+  },
+  {
+    "file": "P07.wav",
+    "text": "Am Rechner landet jede Eingabe sofort im PDF. Live.",
+    "start": 844,
+    "frames": 123,
+    "tempo": 1
+  },
+  {
+    "file": "P08.wav",
+    "text": "Ein Klick – und dein Profi-Angebot ist fertig.",
+    "start": 1024,
+    "frames": 83,
+    "tempo": 1
+  },
+  {
+    "file": "P09.wav",
+    "text": "Steuerung K … und alles ist sofort da.",
+    "start": 1144,
+    "frames": 96,
+    "tempo": 1
+  },
+  {
+    "file": "P10.wav",
+    "text": "Jedes Dokument, jeder Status. Export als Excel inklusive.",
+    "start": 1264,
+    "frames": 117,
+    "tempo": 1.08
+  },
+  {
+    "file": "P11.wav",
+    "text": "Deine Zahlen – klar und auf einen Blick.",
+    "start": 1384,
+    "frames": 75,
+    "tempo": 1
+  },
+  {
+    "file": "P12.wav",
+    "text": "Und draußen? [chuckles] Baustellen-Modus an. Lesbar, auch in der Sonne.",
+    "start": 1499,
+    "frames": 123,
+    "tempo": 1.08
+  },
+  {
+    "file": "P13.wav",
+    "text": "Läuft offline – deine Daten bleiben bei dir. Kavox. Jetzt testen!",
+    "start": 1625,
+    "frames": 146,
+    "tempo": 1
+  }
+]
