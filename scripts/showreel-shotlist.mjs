@@ -49,7 +49,7 @@ for (const c of VO_CUES) md += `| ${c.line} | ${tc(Math.round(c.at * FPS))} | ${
 md += `\n## In-shot beats\n\nSeconds after the start of the shot (edit \`BEATS\` in the timeline).\n\n`;
 for (const s of TIMED_SHOTS) {
   const b = BEATS[s.id];
-  md += `- **${s.id}**: ${Object.entries(b).map(([k, v]) => `${k} ${v} s (${tc(s.from + Math.round(v * FPS))})`).join(', ')}\n`;
+  md += `- **${s.id}**: ${Object.entries(b).map(([k, v]) => (k.endsWith('Every') ? `${k} ${v} s (interval)` : `${k} ${v} s (${tc(s.from + Math.round(v * FPS))})`)).join(', ')}\n`;
 }
 
 fs.writeFileSync('SHOTLIST.md', md);
