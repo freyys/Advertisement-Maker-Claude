@@ -124,9 +124,9 @@ There is no music; the SFX come from `scripts/make-sfx.mjs` and `scripts/make-go
 - `src/gold/words.json`: word timings for the captions. They were transcribed
   with Whisper (small) per pause-separated segment, corrected by hand, and the
   words were spread over each segment by length.
-- Props: `handle` (default `@deinhandle`), `withSfx`, `withCaptions`
+- Props: `handle` (default `@i_v_a_n_w_e_b_e_r`), `withSfx`, `withCaptions`
 
 ```bash
 node scripts/make-gold-sfx.mjs
-npx remotion render GoldReel out/gold-reel.mp4 --props='{"handle":"@deinhandle","withSfx":true,"withCaptions":true}'
+npx remotion render GoldReel out/gold-reel.mp4 --props='{"handle":"@i_v_a_n_w_e_b_e_r","withSfx":true,"withCaptions":true}'
 ```

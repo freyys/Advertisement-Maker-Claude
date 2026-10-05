@@ -308,7 +308,7 @@ const sampleText = (text: string, size: number): Array<[number, number]> => {
 
 export const S9Logo: React.FC<{handle: string}> = ({handle}) => {
   const t = useT();
-  const size = handle.length > 14 ? 92 : 112;
+  const size = Math.min(112, Math.floor(1500 / handle.length));
   const pts = useMemo(() => sampleText(handle, size), [handle, size]);
   const form = p(t, 0.2, 2.2, ease.inOut);
   const solid = p(t, 2.0, 2.8);

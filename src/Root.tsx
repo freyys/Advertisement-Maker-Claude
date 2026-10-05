@@ -61,7 +61,7 @@ export const RemotionRoot: React.FC = () => (
       fps={GOLD_FPS}
       width={1080}
       height={1920}
-      defaultProps={{handle: '@deinhandle', withSfx: true, withCaptions: true}}
+      defaultProps={{handle: '@i_v_a_n_w_e_b_e_r', withSfx: true, withCaptions: true}}
     />
   </>
 );
