@@ -82,7 +82,7 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
     const dh = dw / aspect;
     const pan = prog(f, tPan, tSweep + 6, EASE_CAM);
     const view = lerpRect(
-      v ? viewAt(1580, 560, 1000, aspect) : viewAt(1255, 290, 1030, aspect),
+      v ? viewAt(1250, 560, 1020, aspect) : viewAt(1255, 290, 1030, aspect),
       v ? viewAt(1330, 1110, 1100, aspect) : viewAt(1330, 1250, 1500, aspect),
       pan,
     );

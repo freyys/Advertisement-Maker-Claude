@@ -177,12 +177,12 @@ export const Sh04Sagen: React.FC<SceneProps> = ({dur}) => {
         </Plane>
       </Camera>
 
+      <TopScrim h={600} />
       {/* voice → text */}
-      <div style={{position: 'absolute', left: v ? 190 : 610, top: v ? 520 : 300, transform: `translateX(${(1 - voice) * -30}px)`}}>
-        <Waveform f={f} on={voice} w={v ? 700 : 360} h={v ? 90 : 110} />
+      <div style={{position: 'absolute', left: v ? 500 : 610, top: v ? 236 : 300, transform: `translateX(${(1 - voice) * -30}px)`}}>
+        <Waveform f={f} on={voice} w={v ? 500 : 360} h={v ? 100 : 110} />
       </div>
 
-      <TopScrim h={600} />
       <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 230 : 140}}>
         <Headline text="Sagen. Fertig." at={tType} size={v ? 104 : 118} wordAt={[tType, tFertig]} />
       </div>

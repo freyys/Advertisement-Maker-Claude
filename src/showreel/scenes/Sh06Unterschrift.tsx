@@ -111,7 +111,7 @@ export const Sh06Unterschrift: React.FC<SceneProps> = ({dur}) => {
       <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 230 : 120}}>
         <Headline text={'Unterschrift\nvor Ort.'} at={6} size={v ? 96 : 104} />
       </div>
-      <BottomScrim from={1200} opacity={prog(f, tCount - 12, tCount + 4)} />
+      <BottomScrim from={1295} opacity={prog(f, tCount - 12, tCount + 4)} />
       <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 1335 : 470}}>
         <Callout label="BRUTTO · SUMME VOR ORT" value={BRUTTO} at={tCount - 6} countFrom={tCount} countTo={tCountEnd} size={v ? 70 : 88} sub="Netto 1.463,62 € + MwSt 19 % 278,09 €" />
       </div>

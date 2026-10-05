@@ -157,7 +157,7 @@ export const BottomScrim: React.FC<{from: number; opacity?: number}> = ({from, o
       style={{
         pointerEvents: 'none',
         opacity,
-        background: `linear-gradient(180deg, rgba(5,7,9,0) ${from}px, rgba(5,7,9,0.9) ${from + 140}px, rgba(5,7,9,0.95) 100%)`,
+        background: `linear-gradient(180deg, rgba(5,7,9,0) ${from}px, rgba(5,7,9,0.94) ${from + 130}px, rgba(5,7,9,0.97) 100%)`,
       }}
     />
   );
