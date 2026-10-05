@@ -6,6 +6,8 @@ import {TeaserVertical} from './Vertical';
 import {fontsLoaded} from './fonts';
 import {StoryScreen, StoryVertical} from './story/Story';
 import {DURATION as STORY_DURATION} from './story/timeline';
+import {GoldReel} from './gold/GoldReel';
+import {DURATION as GOLD_DURATION, FPS as GOLD_FPS} from './gold/timeline';
 
 const handle = delayRender('Loading Plus Jakarta Sans');
 fontsLoaded.then(() => continueRender(handle));
@@ -50,6 +52,16 @@ export const RemotionRoot: React.FC = () => (
       width={1080}
       height={1920}
       defaultProps={defaultProps}
+    />
+    {/* "GoldReel": 9:16 Instagram reel on gold, voice-over public/gold/voice.mp3 */}
+    <Composition
+      id="GoldReel"
+      component={GoldReel}
+      durationInFrames={GOLD_DURATION}
+      fps={GOLD_FPS}
+      width={1080}
+      height={1920}
+      defaultProps={{handle: '@deinhandle', withSfx: true, withCaptions: true}}
     />
   </>
 );

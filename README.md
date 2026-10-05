@@ -108,3 +108,25 @@ every ⚡ frame, quiet ticks for dictation and typing, a click + shimmer at f327
 and a riser into the impact at f348. Peaks are baked at about −32 to −11 dBFS, so the
 bus sits around −18 dB and the platform sound can play on top. Add the trending
 sound inside TikTok or Instagram ("Use this sound").
+
+## Gold reel (`GoldReel`, 1080×1920, 24 fps, ~72 s)
+
+Instagram Reel about gold as a store of value. The voice-over is
+`public/gold/voice.mp3` (ElevenLabs). It runs 71.5 s, so the 9 scenes from the
+brief (planned for ~55 s) are stretched to fit the sentences they illustrate.
+Everything is drawn in code: the pillow and note, a 3D ounce with a real rim, the
+growing bar, the press split screen, a vault rendered with perspective projection,
+the banker at the vault door, the montage, the 3D chart, the anchor, and the
+particle logo. It also adds film grain, a teal-and-gold grade and volumetric light cones.
+There is no music; the SFX come from `scripts/make-sfx.mjs` and `scripts/make-gold-sfx.mjs`.
+
+- `src/gold/timeline.ts`: the scene slots (in seconds)
+- `src/gold/words.json`: word timings for the captions. They were transcribed
+  with Whisper (small) per pause-separated segment, corrected by hand, and the
+  words were spread over each segment by length.
+- Props: `handle` (default `@deinhandle`), `withSfx`, `withCaptions`
+
+```bash
+node scripts/make-gold-sfx.mjs
+npx remotion render GoldReel out/gold-reel.mp4 --props='{"handle":"@deinhandle","withSfx":true,"withCaptions":true}'
+```
