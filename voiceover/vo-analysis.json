@@ -1,0 +1,247 @@
+{
+  "take": "kavox_vo_elevenlabs_v4_amanda.mp3",
+  "duration": 63.242438,
+  "lettersPerSecond": 13.026163980795706,
+  "lines": [
+    {
+      "line": 1,
+      "text": "Kennst du das? Feierabend… und auf dem Küchentisch warten noch drei Angebote.",
+      "start": 0,
+      "end": 6.52014,
+      "segments": [
+        {
+          "start": 0,
+          "end": 2.45048
+        },
+        {
+          "start": 2.73671,
+          "end": 5.48971
+        },
+        {
+          "start": 6.06175,
+          "end": 6.52014
+        }
+      ]
+    },
+    {
+      "line": 2,
+      "text": "Was wäre, wenn du sie einfach… sagst?",
+      "start": 7.0017,
+      "end": 9.64673,
+      "segments": [
+        {
+          "start": 7.0017,
+          "end": 8.77862
+        },
+        {
+          "start": 9.06367,
+          "end": 9.64673
+        }
+      ]
+    },
+    {
+      "line": 3,
+      "text": "Wohnzimmer, fünf mal vier, zwei sechzig hoch. Tapete runter, spachteln, streichen. Fertig.",
+      "start": 10.159,
+      "end": 16.5183,
+      "segments": [
+        {
+          "start": 10.159,
+          "end": 12.9306
+        },
+        {
+          "start": 13.2774,
+          "end": 15.6447
+        },
+        {
+          "start": 15.9549,
+          "end": 16.5183
+        }
+      ]
+    },
+    {
+      "line": 4,
+      "text": "Kavox rechnet die Flächen, zieht Fenster und Tür ab – und zeigt dir jeden Rechenweg. Kein Rätselraten mehr.",
+      "start": 16.9405,
+      "end": 24.1434,
+      "segments": [
+        {
+          "start": 16.9405,
+          "end": 20.1661
+        },
+        {
+          "start": 20.3169,
+          "end": 22.0762
+        },
+        {
+          "start": 22.3609,
+          "end": 22.5951
+        },
+        {
+          "start": 22.815,
+          "end": 24.1434
+        }
+      ]
+    },
+    {
+      "line": 5,
+      "text": "Die Summe steht, noch bevor du die Leiter einpackst. Der Kunde unterschreibt direkt vor Ort.",
+      "start": 24.5435,
+      "end": 29.9891,
+      "segments": [
+        {
+          "start": 24.5435,
+          "end": 27.4433
+        },
+        {
+          "start": 27.792,
+          "end": 28.7867
+        },
+        {
+          "start": 28.9137,
+          "end": 29.9891
+        }
+      ]
+    },
+    {
+      "line": 6,
+      "text": "Ein Tipp – und alles liegt am Rechner. Automatisch geprüft. Als sauberes PDF. Raus damit.",
+      "start": 30.3813,
+      "end": 36.8976,
+      "segments": [
+        {
+          "start": 30.3813,
+          "end": 30.8758
+        },
+        {
+          "start": 31.1561,
+          "end": 31.3417
+        },
+        {
+          "start": 31.4857,
+          "end": 32.6928
+        },
+        {
+          "start": 32.9581,
+          "end": 34.2725
+        },
+        {
+          "start": 34.5113,
+          "end": 35.9256
+        },
+        {
+          "start": 36.1397,
+          "end": 36.8976
+        }
+      ]
+    },
+    {
+      "line": 7,
+      "text": "Morgens siehst du sofort, was offen ist… was überfällig ist… und was diese Woche reinkommt.",
+      "start": 37.3563,
+      "end": 43.3274,
+      "segments": [
+        {
+          "start": 37.3563,
+          "end": 39.648
+        },
+        {
+          "start": 39.9802,
+          "end": 41.4119
+        },
+        {
+          "start": 41.6895,
+          "end": 43.3274
+        }
+      ]
+    },
+    {
+      "line": 8,
+      "text": "Steuerkreuz? Nein – Strg plus K. Alles in einer Sekunde gefunden.",
+      "start": 43.7402,
+      "end": 49.5841,
+      "segments": [
+        {
+          "start": 43.7402,
+          "end": 44.6912
+        },
+        {
+          "start": 44.9488,
+          "end": 45.3585
+        },
+        {
+          "start": 45.5502,
+          "end": 46.894
+        },
+        {
+          "start": 47.1699,
+          "end": 47.4036
+        },
+        {
+          "start": 47.6275,
+          "end": 49.5841
+        }
+      ]
+    },
+    {
+      "line": 9,
+      "text": "Umsatz. Zahlungsdauer. Rechnungsausgangsbuch als Excel. Alles im Griff.",
+      "start": 49.986,
+      "end": 55.1118,
+      "segments": [
+        {
+          "start": 49.986,
+          "end": 50.5844
+        },
+        {
+          "start": 50.784,
+          "end": 51.6331
+        },
+        {
+          "start": 51.8848,
+          "end": 53.8895
+        },
+        {
+          "start": 54.1876,
+          "end": 55.1118
+        }
+      ]
+    },
+    {
+      "line": 10,
+      "text": "Und das Beste? Deine Daten bleiben bei dir. Offline.",
+      "start": 55.5252,
+      "end": 59.3669,
+      "segments": [
+        {
+          "start": 55.5252,
+          "end": 56.3441
+        },
+        {
+          "start": 56.7837,
+          "end": 58.442
+        },
+        {
+          "start": 58.8314,
+          "end": 59.3669
+        }
+      ]
+    },
+    {
+      "line": 11,
+      "text": "Kavox. Angebote, die sich selbst schreiben.",
+      "start": 59.8696,
+      "end": 63.0248,
+      "segments": [
+        {
+          "start": 59.8696,
+          "end": 60.5704
+        },
+        {
+          "start": 60.9415,
+          "end": 63.0248
+        }
+      ]
+    }
+  ]
+}
