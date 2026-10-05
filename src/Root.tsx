@@ -6,11 +6,15 @@ import {TeaserVertical} from './Vertical';
 import {fontsLoaded} from './fonts';
 import {StoryScreen, StoryVertical} from './story/Story';
 import {DURATION as STORY_DURATION} from './story/timeline';
+import {Animatic} from './showreel/Animatic';
+import {Showreel, ShowreelProps} from './showreel/Showreel';
+import {DURATION as REEL_DURATION, FPS as REEL_FPS} from './showreel/timeline';
 
 const handle = delayRender('Loading Plus Jakarta Sans');
 fontsLoaded.then(() => continueRender(handle));
 
 const defaultProps: TeaserProps = {withMusic: false, withSfx: true};
+const reelProps: ShowreelProps = {showMarkers: false};
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -50,6 +54,41 @@ export const RemotionRoot: React.FC = () => (
       width={1080}
       height={1920}
       defaultProps={defaultProps}
+    />
+    {/* "KavoxShowreel": the 75 s cinematic showreel built from the real screenshots */}
+    <Composition
+      id="KavoxShowreel-16x9"
+      component={Showreel}
+      durationInFrames={REEL_DURATION}
+      fps={REEL_FPS}
+      width={1920}
+      height={1080}
+      defaultProps={reelProps}
+    />
+    <Composition
+      id="KavoxShowreel-9x16"
+      component={Showreel}
+      durationInFrames={REEL_DURATION}
+      fps={REEL_FPS}
+      width={1080}
+      height={1920}
+      defaultProps={reelProps}
+    />
+    <Composition
+      id="KavoxShowreel-Animatic"
+      component={Animatic}
+      durationInFrames={REEL_DURATION}
+      fps={REEL_FPS}
+      width={1920}
+      height={1080}
+    />
+    <Composition
+      id="KavoxShowreel-Animatic-9x16"
+      component={Animatic}
+      durationInFrames={REEL_DURATION}
+      fps={REEL_FPS}
+      width={1080}
+      height={1920}
     />
   </>
 );
