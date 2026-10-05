@@ -67,7 +67,7 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
   const tSweep = beat('pruefen', 'sweep');
   const tPdf = beat('pruefen', 'pdf');
   const tStripes = beat('pruefen', 'stripes');
-  const tSend = dur - 22;
+  const tSend = Math.min(beat('pruefen', 'send'), dur - 12);
 
   const headline = (
     <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 230 : 120}}>
@@ -113,7 +113,7 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
   const g = f - tPdf;
   const fall = prog(g, 0, 24, EASE);
   const settle = prog(g, 0, dur - tPdf, EASE_CAM);
-  const send = prog(f, tSend, dur, EASE_IN);
+  const send = prog(f, tSend, Math.min(tSend + 22, dur), EASE_IN);
   const sh = v ? 1120 : 960;
   const sw = sh * (1786 / 2526);
   const k = sw / 1786;

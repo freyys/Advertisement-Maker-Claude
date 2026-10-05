@@ -1,11 +1,15 @@
 // Kavox showreel: every cut and sync point lives in this file.
 //
-// After recording the voiceover, retime the film here:
-//   1. Drop the MP3 into public/voiceover.mp3 and open the Studio (npm run dev).
-//   2. Move each shot's `at` (seconds) to the frame where its voice line starts.
-//      A shot ends where the next one starts, so nothing else has to change.
-//   3. Fine-tune the in-shot beats in BEATS (seconds, relative to the shot start).
-//   4. If the voice runs longer than 75 s, raise END. The outro holds longer.
+// Two ways to sync the film to a recorded voiceover:
+//   a) Automatic: `node scripts/showreel-voice.mjs sync <take.mp3>` measures the
+//      take, writes src/showreel/vo-sync.ts (cut times, beats, cues, end) and
+//      builds public/voiceover.mp3. Values in vo-sync.ts override the defaults
+//      below.
+//   b) By hand: set VO_SYNC to null in vo-sync.ts, then move each shot's `at`
+//      (seconds) to where its voice line starts, fine-tune BEATS (seconds after
+//      the shot start), and raise END if the voice runs longer than 75 s.
+
+import {VO_SYNC} from './vo-sync.ts';
 
 export const FPS = 30;
 
@@ -38,7 +42,7 @@ export type Shot = {
 };
 
 // The 13 shots of the shot list. Cuts are synced to the start of each voice line.
-export const SHOTS: readonly Shot[] = [
+const DEFAULT_SHOTS: readonly Shot[] = [
   {id: 'intro', at: 0, caption: null, vo: null},
   {id: 'nacht', at: 5, caption: '22:47 Uhr. Noch drei Angebote.', vo: 1},
   {id: 'baustelle', at: 11, caption: 'Direkt auf der Baustelle.', vo: 2},
@@ -54,8 +58,10 @@ export const SHOTS: readonly Shot[] = [
   {id: 'outro', at: 69, caption: 'Angebote, die sich selbst schreiben.', vo: 10},
 ];
 
+export const SHOTS: readonly Shot[] = DEFAULT_SHOTS.map((s) => ({...s, at: VO_SYNC?.shots[s.id] ?? s.at}));
+
 /** End of the film in seconds. */
-export const END = 75;
+export const END = VO_SYNC?.end ?? 75;
 export const DURATION = sec(END);
 
 export type ShotTiming = Shot & {from: number; dur: number};
@@ -82,7 +88,7 @@ export const CUTS: number[] = TIMED_SHOTS.slice(1).map((s) => s.from);
 // ducking. Replace both with the real values after recording.
 export type VoCue = {line: number; at: number; len: number; text: string};
 
-export const VO_CUES: readonly VoCue[] = [
+const DEFAULT_CUES: readonly VoCue[] = [
   {line: 1, at: 5.3, len: 5.6, text: 'Kennst du das? Feierabend… und auf dem Küchentisch warten noch drei Angebote.'},
   {line: 2, at: 11.6, len: 3.4, text: 'Was wäre, wenn du sie einfach… sagst?'},
   {line: 3, at: 17.3, len: 6.6, text: 'Wohnzimmer, fünf mal vier, zwei sechzig hoch. Tapete runter, spachteln, streichen. Fertig.'},
@@ -96,11 +102,16 @@ export const VO_CUES: readonly VoCue[] = [
   {line: 11, at: 72.6, len: 2.2, text: 'Kavox. Angebote, die sich selbst schreiben.'},
 ];
 
+export const VO_CUES: readonly VoCue[] = DEFAULT_CUES.map((c) => {
+  const m = VO_SYNC?.cues.find((x) => x.line === c.line);
+  return m ? {...c, at: m.at, len: m.len} : c;
+});
+
 /** Where the voiceover file starts on the timeline (seconds). */
 export const VO_OFFSET = 0;
 
 // ---- In-shot beats (seconds after the shot's start) ------------------------
-export const BEATS = {
+const DEFAULT_BEATS = {
   intro: {dot: 0.35, pulse1: 1.0, pulse2: 1.8, mark: 2.5, push: 4.4},
   nacht: {lamp: 0.2, papers: 0.7, paperEvery: 0.35, clock: 0.4, headline: 1.1, line2: 2.1},
   baustelle: {stripes: 0, headline: 0.8, tap: 2.6, flare: 2.75},
@@ -108,15 +119,19 @@ export const BEATS = {
   rechenweg: {zoom: 0.2, lift: 1.3, line1: 1.7, line2: 2.5, line3: 3.1, result: 3.7},
   unterschrift: {count: 0.5, countEnd: 2.4, pulse: 3.0},
   uebergabe: {tap: 0.8, fly: 1.15, land: 2.15, settle: 2.9},
-  pruefen: {check1: 0.35, checkEvery: 0.38, pan: 1.6, sweep: 2.3, pdf: 3.0, stripes: 3.5},
+  pruefen: {check1: 0.35, checkEvery: 0.38, pan: 1.6, sweep: 2.3, pdf: 3.0, stripes: 3.5, send: 5.27},
   cockpit: {type: 0.25, cards: 0.75, cardEvery: 0.16, offen: 2.4, ueberfaellig: 3.3},
   cashflow: {draw: 0.25, drawEnd: 3.3},
   befehl: {keys: 0.1, press: 0.45, palette: 0.85, type: 1.25, typeEvery: 0.12, rows: 1.6},
   archiv: {left: 0, right: 0.15, count: 0.2, countEnd: 1.4, zahldauer: 1.0, excel: 1.6, griff: 2.3},
   outro: {offline: 0.3, collapse: 3.2, logo: 3.5, tagline: 4.2},
-} as const;
+};
 
-export type Beats = typeof BEATS;
+export type Beats = typeof DEFAULT_BEATS;
+
+export const BEATS: Beats = Object.fromEntries(
+  Object.entries(DEFAULT_BEATS).map(([id, b]) => [id, {...b, ...(VO_SYNC?.beats[id] ?? {})}]),
+) as Beats;
 
 /** Cuts inside a shot (they get the same chromatic hit as the shot cuts). */
 export const INNER_CUTS: number[] = [sec(SHOTS.find((s) => s.id === 'pruefen')!.at + BEATS.pruefen.pdf)];

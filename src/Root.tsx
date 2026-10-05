@@ -14,7 +14,7 @@ const handle = delayRender('Loading Plus Jakarta Sans');
 fontsLoaded.then(() => continueRender(handle));
 
 const defaultProps: TeaserProps = {withMusic: false, withSfx: true};
-const reelProps: ShowreelProps = {showMarkers: false};
+const reelProps: ShowreelProps = {showMarkers: false, withSfx: true};
 
 export const RemotionRoot: React.FC = () => (
   <>

@@ -18,10 +18,13 @@ import {Sh10Cashflow} from './scenes/Sh10Cashflow';
 import {Sh11Befehl} from './scenes/Sh11Befehl';
 import {Sh12Archiv} from './scenes/Sh12Archiv';
 import {Sh13Outro} from './scenes/Sh13Outro';
+import {ReelSfx} from './Sfx';
 
 export type ShowreelProps = {
   /** Show shot name, timecode and the current voice line (for syncing in the Studio). */
   showMarkers: boolean;
+  /** Sound design (whooshes, clicks, hits from public/sfx). */
+  withSfx: boolean;
 };
 
 export type SceneProps = {dur: number};
@@ -85,7 +88,7 @@ const musicVolume = (f: number, withVo: boolean) => {
   return 0.55 * fadeIn * fadeOut * (1 - 0.55 * duck);
 };
 
-export const Showreel: React.FC<ShowreelProps> = ({showMarkers}) => {
+export const Showreel: React.FC<ShowreelProps> = ({showMarkers, withSfx}) => {
   const withVo = hasFile('voiceover.mp3');
   const withMusic = hasFile('music.mp3');
   return (
@@ -123,6 +126,7 @@ export const Showreel: React.FC<ShowreelProps> = ({showMarkers}) => {
         </Sequence>
       )}
       {withMusic && <Audio src={staticFile('music.mp3')} volume={(f) => musicVolume(f, withVo)} />}
+      {withSfx && <ReelSfx />}
       {showMarkers && <Markers />}
     </AbsoluteFill>
   );

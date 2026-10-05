@@ -6,11 +6,18 @@
     "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
-    "lib": ["DOM", "ES2022"],
+    "lib": [
+      "DOM",
+      "ES2022"
+    ],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["src", "remotion.config.ts"]
+  "include": [
+    "src",
+    "remotion.config.ts"
+  ]
 }
