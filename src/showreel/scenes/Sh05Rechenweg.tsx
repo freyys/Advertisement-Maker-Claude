@@ -5,7 +5,7 @@ import {C, EASE, EASE_CAM, FONT, tabular} from '../theme';
 import {beat} from '../timeline';
 import {H03, IMG} from '../assets';
 import {mix, prog, useFormat} from '../util';
-import {Camera, Plane, Stage} from '../components/Stage';
+import {Camera, Plane, Stage, TopScrim} from '../components/Stage';
 import {Phone, phoneSize, STATUS_H} from '../components/Phone';
 import {Highlight, Space} from '../components/Screen';
 import {Headline} from '../components/Headline';
@@ -110,7 +110,7 @@ export const Sh05Rechenweg: React.FC<SceneProps> = ({dur}) => {
   const zoom = prog(f, tZoom, tZoom + 50, EASE);
   const s = mix(1, v ? 1.22 : 1.45, zoom) + prog(f, 0, dur, EASE_CAM) * 0.05;
   const Ty = mix(v ? -120 : 40, v ? -390 : -150, zoom);
-  const x = v ? 0 : mix(330, 360, zoom);
+  const x = v ? 0 : mix(380, 430, zoom);
   const lift = prog(f, tLift, tLift + 26, EASE);
 
   const lineOn = (a: number, b: number) => prog(f, a, a + 8) * (1 - prog(f, b, b + 10));
@@ -151,8 +151,9 @@ export const Sh05Rechenweg: React.FC<SceneProps> = ({dur}) => {
           <Formula f={f} t={[t1, t2, t3]} tResult={tRes} w={panel.w} s={panel.s} />
         </Plane>
       </Camera>
+      <TopScrim h={640} />
       <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 230 : 120}}>
-        <Headline text={'Jeder Rechenweg\nsichtbar.'} at={tZoom + 4} size={v ? 92 : 100} />
+        <Headline text={'Jeder Rechenweg\nsichtbar.'} at={tZoom + 4} size={v ? 92 : 92} />
       </div>
     </AbsoluteFill>
   );

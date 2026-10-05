@@ -5,7 +5,7 @@ import {C, EASE, EASE_CAM, EASE_IN, FONT} from '../theme';
 import {beat} from '../timeline';
 import {H02, IMG} from '../assets';
 import {keys, mix, prog, useFormat} from '../util';
-import {Camera, Plane, Stage} from '../components/Stage';
+import {BottomScrim, Camera, Plane, Stage, TopScrim} from '../components/Stage';
 import {Phone, phoneSize} from '../components/Phone';
 import {Band, Highlight, Patch, Space} from '../components/Screen';
 import {Headline} from '../components/Headline';
@@ -182,9 +182,11 @@ export const Sh04Sagen: React.FC<SceneProps> = ({dur}) => {
         <Waveform f={f} on={voice} w={v ? 700 : 360} h={v ? 90 : 110} />
       </div>
 
+      <TopScrim h={600} />
       <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 230 : 140}}>
         <Headline text="Sagen. Fertig." at={tType} size={v ? 104 : 118} wordAt={[tType, tFertig]} />
       </div>
+      <BottomScrim from={1120} opacity={prog(f, tCount - 6, tCount + 10)} />
       <div style={{position: 'absolute', left: v ? 60 : 120, top: v ? 1250 : 600}}>
         <Callout label="NETTO LAUT KATALOG" value={1463.62} at={tCount} countTo={tCount + 40} size={v ? 92 : 96} sub="Wohnzimmer · 5 Positionen" />
       </div>

@@ -17,7 +17,12 @@
     "render:story:screen:silent": "remotion render KavoxStory-Screen out/kavox-story-screen-silent.mp4 --muted",
     "render:story:vertical": "remotion render KavoxStory-Vertical out/kavox-story-vertical-sfx.mp4",
     "render:story:vertical:silent": "remotion render KavoxStory-Vertical out/kavox-story-vertical-silent.mp4 --muted",
-    "render:story": "npm run sfx && npm run render:story:screen && npm run render:story:screen:silent && npm run render:story:vertical && npm run render:story:vertical:silent"
+    "render:story": "npm run sfx && npm run render:story:screen && npm run render:story:screen:silent && npm run render:story:vertical && npm run render:story:vertical:silent",
+    "render:reel:16x9": "remotion render KavoxShowreel-16x9 out/kavox_showreel_16x9.mp4 --codec=h264 --crf=18",
+    "render:reel:9x16": "remotion render KavoxShowreel-9x16 out/kavox_showreel_9x16.mp4 --codec=h264 --crf=18",
+    "render:reel": "npm run render:reel:16x9 && npm run render:reel:9x16",
+    "reel:contact": "node scripts/showreel-stills.mjs contact KavoxShowreel-16x9 out/contactsheet.png",
+    "reel:shotlist": "node scripts/showreel-shotlist.mjs"
   },
   "dependencies": {
     "@fontsource/plus-jakarta-sans": "^5.3.0",

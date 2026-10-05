@@ -5,7 +5,7 @@ import {C, EASE, EASE_CAM, FONT, tabular} from '../theme';
 import {beat} from '../timeline';
 import {H04, IMG} from '../assets';
 import {countTo, eur, mix, prog, useFormat} from '../util';
-import {Camera, Plane, Stage} from '../components/Stage';
+import {BottomScrim, Camera, Plane, Stage, TopScrim} from '../components/Stage';
 import {Phone, phoneSize, STATUS_H} from '../components/Phone';
 import {Highlight, Patch, Space} from '../components/Screen';
 import {Headline} from '../components/Headline';
@@ -107,11 +107,13 @@ export const Sh06Unterschrift: React.FC<SceneProps> = ({dur}) => {
           <Phone screenW={ps.screenW} content={content} statusColor="#0A0A0A" />
         </Plane>
       </Camera>
+      <TopScrim h={640} />
       <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 230 : 120}}>
         <Headline text={'Unterschrift\nvor Ort.'} at={6} size={v ? 96 : 104} />
       </div>
-      <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 470 : 470}}>
-        <Callout label="BRUTTO · SUMME VOR ORT" value={BRUTTO} at={tCount - 6} countFrom={tCount} countTo={tCountEnd} size={v ? 80 : 88} sub="Netto 1.463,62 € + MwSt 19 % 278,09 €" />
+      <BottomScrim from={1200} opacity={prog(f, tCount - 12, tCount + 4)} />
+      <div style={{position: 'absolute', left: v ? 70 : 120, top: v ? 1335 : 470}}>
+        <Callout label="BRUTTO · SUMME VOR ORT" value={BRUTTO} at={tCount - 6} countFrom={tCount} countTo={tCountEnd} size={v ? 70 : 88} sub="Netto 1.463,62 € + MwSt 19 % 278,09 €" />
       </div>
     </AbsoluteFill>
   );

@@ -27,7 +27,7 @@ export const Sh13Outro: React.FC<SceneProps> = ({dur}) => {
   const ff = Math.min(f, hold);
 
   // ---- "Offline · Daten bleiben hier" ----
-  const textSize = v ? 52 : 62;
+  const textSize = v ? 56 : 70;
   const dotD = textSize * 0.36;
   const words = ['Offline', '·', 'Daten', 'bleiben', 'hier'];
   const textOut = prog(ff, tCollapse, tCollapse + 12, EASE_IN);

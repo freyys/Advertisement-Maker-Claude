@@ -133,3 +133,32 @@ export const Plane: React.FC<{
     </div>
   );
 };
+
+/** 9:16 only: darkens the top of the frame so captions read over the UI. */
+export const TopScrim: React.FC<{h?: number}> = ({h = 600}) => {
+  const {v} = useFormat();
+  if (!v) return null;
+  return (
+    <AbsoluteFill
+      style={{
+        pointerEvents: 'none',
+        background: `linear-gradient(180deg, rgba(5,7,9,0.95) 0px, rgba(5,7,9,0.9) ${h * 0.62}px, rgba(5,7,9,0) ${h}px)`,
+      }}
+    />
+  );
+};
+
+/** 9:16 only: darkens the bottom from y = `from` so a callout reads on top. */
+export const BottomScrim: React.FC<{from: number; opacity?: number}> = ({from, opacity = 1}) => {
+  const {v} = useFormat();
+  if (!v || opacity <= 0) return null;
+  return (
+    <AbsoluteFill
+      style={{
+        pointerEvents: 'none',
+        opacity,
+        background: `linear-gradient(180deg, rgba(5,7,9,0) ${from}px, rgba(5,7,9,0.9) ${from + 140}px, rgba(5,7,9,0.95) 100%)`,
+      }}
+    />
+  );
+};

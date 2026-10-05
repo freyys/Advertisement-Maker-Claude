@@ -82,7 +82,7 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
     const dh = dw / aspect;
     const pan = prog(f, tPan, tSweep + 6, EASE_CAM);
     const view = lerpRect(
-      v ? viewAt(1500, 750, 1200, aspect) : viewAt(1400, 478, 1700, aspect),
+      v ? viewAt(1580, 560, 1000, aspect) : viewAt(1255, 290, 1030, aspect),
       v ? viewAt(1330, 1110, 1100, aspect) : viewAt(1330, 1250, 1500, aspect),
       pan,
     );
@@ -91,7 +91,7 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
       <AbsoluteFill>
         <Stage glowX={0.55} glowY={0.5} />
         <Camera>
-          <Plane w={dw} h={dh} x={v ? 0 : 300} y={v ? 100 : 70} z={cam * 80} rx={8} ry={mix(-9, -4, cam)}>
+          <Plane w={dw} h={dh} x={v ? 0 : 240} y={v ? 100 : 70} z={cam * 80} rx={8} ry={mix(-9, -4, cam)}>
             <Display img={IMG.d07} view={view} w={dw} h={dh}>
               {D07.checks.map((c, i) => {
                 const at = tC1 + i * every;
@@ -114,7 +114,7 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
   const fall = prog(g, 0, 24, EASE);
   const settle = prog(g, 0, dur - tPdf, EASE_CAM);
   const send = prog(f, tSend, dur, EASE_IN);
-  const sh = v ? 1300 : 960;
+  const sh = v ? 1120 : 960;
   const sw = sh * (1786 / 2526);
   const k = sw / 1786;
   const land = g >= 20 ? Math.exp(-(g - 20) / 8) : 0;
@@ -123,14 +123,14 @@ export const Sh08Pruefen: React.FC<SceneProps> = ({dur}) => {
       <Stage glowX={v ? 0.5 : 0.62} glowY={0.55} glow={1 + land * 0.8} />
       <Camera perspective={2600}>
         {/* contact shadow */}
-        <Plane w={sw * 1.1} h={sh * 0.95} x={(v ? 0 : 280) + send * 1500} y={v ? 160 : 40} z={-60} rx={8} opacity={fall * (1 - send) * 0.8}>
+        <Plane w={sw * 1.1} h={sh * 0.95} x={(v ? 0 : 280) + send * 1500} y={v ? 260 : 40} z={-60} rx={8} opacity={fall * (1 - send) * 0.8}>
           <div style={{width: '100%', height: '100%', borderRadius: 30, background: 'rgba(0,0,0,0.9)', filter: `blur(${50 - 30 * fall}px)`}} />
         </Plane>
         <Plane
           w={sw}
           h={sh}
           x={(v ? 0 : 270) + send * 1600}
-          y={(v ? 130 : 20) + (1 - fall) * -700}
+          y={(v ? 230 : 20) + (1 - fall) * -700}
           z={(1 - fall) * 500}
           rx={mix(-72, 7, fall) - send * 10}
           ry={mix(18, -6, fall) + settle * 3}

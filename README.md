@@ -69,6 +69,30 @@ npx remotion render KavoxStory-Vertical out/kavox-story-vertical-silent.mp4 --mu
 npm run render:story
 ```
 
+## Third piece: `KavoxShowreel` (75 s, built from the real screenshots)
+
+A German cinematic showreel (75 s, 30 fps) made from the 13 Kavox screenshots
+in `public/assets/showreel/` (original file names, untouched). Every number on
+screen comes from those screenshots, and all customers are example data.
+
+| ID | Size | Use |
+|---|---|---|
+| `KavoxShowreel-16x9` | 1920×1080 | Main film |
+| `KavoxShowreel-9x16` | 1080×1920 | TikTok / Reels. The same shots recut: phones fill the frame, the KPI cards become a 2 × 2 grid, the split screen stacks, and captions stay inside the safe zone |
+| `KavoxShowreel-Animatic` | 1920×1080 | Static blocking of all 13 shots on the timeline (also `-Animatic-9x16`) |
+
+- **Timing:** `src/showreel/timeline.ts`. `SHOTS` holds the cut times in seconds, `VO_CUES` where each voice line should start, and `BEATS` the in-shot sync points. [`SHOTLIST.md`](SHOTLIST.md) is generated from it (`npm run reel:shotlist`).
+- **Voiceover:** [`voiceover/`](voiceover/) holds the ElevenLabs v3 script and settings. Put the result at `public/voiceover.mp3`, plus an optional `public/music.mp3`. Music ducks under the voice automatically. Without the files the film renders silent.
+- **Look:** Plus Jakarta Sans (bundled, so it renders offline), palette from the UI (`src/showreel/theme.ts`), 2.5D planes with CSS 3D, film grain, vignette, and chromatic aberration only on cuts. The PDF's red/green/blue stripes are used as the transition motif.
+- **Overlays:** typed text and count-ups are drawn in place over the screenshots, size-matched to the UI (German number format via `Intl.NumberFormat('de-DE')`).
+- **Studio:** set the prop `showMarkers: true` to see the shot, timecode and current voice line while syncing.
+
+```bash
+npm run render:reel          # out/kavox_showreel_16x9.mp4 + out/kavox_showreel_9x16.mp4 (H.264, CRF 18)
+npm run reel:contact         # out/contactsheet.png, one still per shot
+node scripts/showreel-stills.mjs frames KavoxShowreel-9x16 600 1200   # single stills
+```
+
 ## Where to change things
 
 - `src/timeline.ts`: every scene slot, ⚡ hit and scene-internal beat (retime here)
