@@ -22,7 +22,11 @@
     "render:reel:9x16": "remotion render KavoxShowreel-9x16 out/kavox_showreel_9x16.mp4 --codec=h264 --crf=18",
     "render:reel": "npm run render:reel:16x9 && npm run render:reel:9x16",
     "reel:contact": "node scripts/showreel-stills.mjs contact KavoxShowreel-16x9 out/contactsheet.png",
-    "reel:shotlist": "node scripts/showreel-shotlist.mjs"
+    "reel:shotlist": "node scripts/showreel-shotlist.mjs",
+    "pitch:music": "node scripts/pitch-music.mjs",
+    "render:pitch:en": "remotion render KavoxPitch-EN out/kavox_pitch_24s_EN.mp4",
+    "render:pitch:de": "remotion render KavoxPitch-DE out/kavox_pitch_24s_DE.mp4",
+    "render:pitch": "npm run pitch:music && npm run render:pitch:en && npm run render:pitch:de"
   },
   "dependencies": {
     "@fontsource/plus-jakarta-sans": "^5.3.0",

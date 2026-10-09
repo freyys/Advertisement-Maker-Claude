@@ -93,6 +93,54 @@ npm run reel:contact         # out/contactsheet.png, one still per shot
 node scripts/showreel-stills.mjs frames KavoxShowreel-9x16 600 1200   # single stills
 ```
 
+## Fourth piece: `KavoxPitch` (24 s startup reel, brand-book look)
+
+A 24-second startup presentation for a resumé showreel. It uses the Pomelli brand book:
+**Classic Linen `#F4F1EA`, Jet Black `#0A0A0C`, Hyacinth Blue `#6E44FF`**, set in Plus Jakarta Sans.
+The look follows the book's aesthetic words: suspended planes, layered translucency and pristine geometry. Every
+line-final full stop is the hyacinth brand dot. Product shots use the real screenshots, and every
+claim comes from the product description (the iPhone companion is labelled *coming soon*).
+
+| ID | Size | Use |
+|---|---|---|
+| `KavoxPitch-EN` | 1920×1080, 720 f @ 30 fps | English master |
+| `KavoxPitch-DE` | 1920×1080, 720 f @ 30 fps | German version (same cut, German copy and number format) |
+
+Props: `lang` (`en`/`de`), `withMusic`, `withSfx`, `credit` (optional small line on the end card,
+e.g. `"Edit & motion: Jane Doe"`; empty by default).
+
+Cut to a 120 BPM grid (beat = 15 f, bar lines at f30 + 60·n):
+
+| Time | Frames | Shot |
+|---|---|---|
+| 0:00 | 0–90 | **Hook**: black, the clock rolls 22:46 → 22:47 on the first bar, "Three quotes still to write." A hyacinth hairline drains, then a linen plane rises |
+| 0:03 | 90–150 | **Drop / logo**: the K lands, A·V·O·X slide out from behind it, "Quotes and invoices for the trades." The camera dives through the counter of the **O** into the montage |
+| 0:05 | 150–210 | **01 Quote**: 05_Angebot as a 3D plane, and the five-step stepper lifts off the screen |
+| 0:07 | 210–270 | **02 Measure**: an isometric 5 × 4 × 2.6 m room draws on, and the equation builds on the beat: 18 × 2.6 − 2 × 1.25 × 1.2 − 1 × 2 = **41.8 m²** (VOB/C) |
+| 0:09 | 270–330 | **03 PDF**: the real AN-2026-041 drops onto the linen, with a "Live preview" tag |
+| 0:11 | 330–390 | **04 Invoice**: the archive plane; the cursor clicks "Create invoice" and the quote card flips into the EN 16931-validated e-invoice |
+| 0:13 | 390–450 | **05 Overview**: the cash-flow chart lifts off and draws itself, and the total counts up in place to 7.648,61 € |
+| 0:15 | 450–510 | **06 On site** (*coming soon*): three iPhone screens fan out, with a voice waveform |
+| 0:17 | 510–570 | **Stop-time** on black: "No cloud. / No account. / No telemetry.", one per beat, with a pulsing 100 % offline badge |
+| 0:19 | 570–630 | **Values fly-through**: Privacy · Precision · Transparency · Independence on glass planes, one per beat |
+| 0:21 | 630–720 | **End card**: the linen plane floods the frame, then the wordmark and "Quotes that don't cost you <u>half your evening</u>." (the brand line, echoing the 22:47 hook). It holds still for the last 20 frames |
+
+The six product shots share one continuous linen stage and whip-pan into each other with a
+horizontal blur.
+
+**Music** is generated in code by `scripts/pitch-music.mjs` (royalty-free and deterministic, written to `public/pitch/music.mp3`).
+It is a 120 BPM track with a half-bar pickup: clock ticks and a riser into the drop at 3 s, the groove under the montage,
+stabs in the stop-time, a build, and a final hit at 21 s that rings out. It is loudness-normalised to −16 LUFS, and the
+UI SFX from `public/sfx` sit on top (`src/pitch/Sfx.tsx`). The finished film measures about −16 LUFS, −1.4 dBTP.
+
+Files: `src/pitch/` (`timeline.ts`, `copy.ts`, `theme.ts`, `ui.tsx`, `Pitch.tsx`, `scenes/`).
+
+```bash
+npm run pitch:music        # rebuild public/pitch/music.mp3
+npm run render:pitch       # music + out/kavox_pitch_24s_EN.mp4 + out/kavox_pitch_24s_DE.mp4 (H.264, CRF 16)
+node scripts/showreel-stills.mjs frames KavoxPitch-EN 125 255 719   # preview stills
+```
+
 ## Where to change things
 
 - `src/timeline.ts`: every scene slot, ⚡ hit and scene-internal beat (retime here)

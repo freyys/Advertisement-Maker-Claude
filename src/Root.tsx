@@ -9,12 +9,15 @@ import {DURATION as STORY_DURATION} from './story/timeline';
 import {Animatic} from './showreel/Animatic';
 import {Showreel, ShowreelProps} from './showreel/Showreel';
 import {DURATION as REEL_DURATION, FPS as REEL_FPS} from './showreel/timeline';
+import {Pitch, PitchProps} from './pitch/Pitch';
+import {DURATION as PITCH_DURATION, FPS as PITCH_FPS} from './pitch/timeline';
 
 const handle = delayRender('Loading Plus Jakarta Sans');
 fontsLoaded.then(() => continueRender(handle));
 
 const defaultProps: TeaserProps = {withMusic: false, withSfx: true};
 const reelProps: ShowreelProps = {showMarkers: false, withSfx: true};
+const pitchProps = (lang: PitchProps['lang']): PitchProps => ({lang, withMusic: true, withSfx: true, credit: ''});
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -89,6 +92,25 @@ export const RemotionRoot: React.FC = () => (
       fps={REEL_FPS}
       width={1080}
       height={1920}
+    />
+    {/* "KavoxPitch": the 24 s startup reel in the brand-book look (EN + DE) */}
+    <Composition
+      id="KavoxPitch-EN"
+      component={Pitch}
+      durationInFrames={PITCH_DURATION}
+      fps={PITCH_FPS}
+      width={1920}
+      height={1080}
+      defaultProps={pitchProps('en')}
+    />
+    <Composition
+      id="KavoxPitch-DE"
+      component={Pitch}
+      durationInFrames={PITCH_DURATION}
+      fps={PITCH_FPS}
+      width={1920}
+      height={1080}
+      defaultProps={pitchProps('de')}
     />
   </>
 );
